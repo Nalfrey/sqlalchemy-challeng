@@ -19,7 +19,7 @@ Base = automap_base()
 Base.prepare(autoload_with=engine)
 
 # Map the classes
-Base.classes.keys()
+#Base.classes.keys()
 Measurement = Base.classes.measurement
 Station = Base.classes.station
 
@@ -58,9 +58,9 @@ def precipitation():
     """Return the precipitation data for the last year"""
     # Get the most recent date and the date one year ago,  # Perform a query to retrieve the data and precipitation scores for the last year
     mrd_list = session.query(Measurement.date, Measurement.prcp).order_by(Measurement.date).all()
-                filter(Measurement.date < '2017-08-23').\
-                filter(Measurement.date > '2016-08-23').\
-                order_by(Measurement.date).all()
+                #filter(Measurement.date < '2017-08-23').\
+                #filter(Measurement.date > '2016-08-23').\
+                #order_by(Measurement.date).all()
     prcp_list = []
     
      # Convert the query results to a dictionary with date as the key and prcp as the value
@@ -82,7 +82,7 @@ def stations():
 
     """Return a JSON list of stations from the dataset"""
     # Perform a query to retrieve the stations data
-    stations_data = session.query(Station.station).ordery_by(Station.station).all()
+    stations_data = session.query(Station.station).order_by(Station.station).all()
 
     session.close()
 
